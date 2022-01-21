@@ -1,0 +1,4 @@
+//GENERATE REQUIREMENTS FILE
+python -m pip freeze > requirements.txt
+
+// to DO: add gitignore
