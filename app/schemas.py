@@ -1,3 +1,6 @@
+from ast import Pass
+from os import access
+from typing import Optional
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 
@@ -39,9 +42,22 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str
 
+class UserLogin(UserCreate):
+    Pass
+
+
+
     # RESPONSE
 class User(UserBase):
     created_at: datetime
 
     class Config:
         orm_mode = True
+
+# -----------------------------------token---------------
+class Token(BaseModel):
+    access_token : str
+    token_type: str
+
+class TokenData(BaseModel):
+    id: Optional[str] = None
