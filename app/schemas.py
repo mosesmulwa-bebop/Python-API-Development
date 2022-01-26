@@ -12,19 +12,21 @@ class PostBase(BaseModel):
     published: bool = True
 
 class PostCreate(PostBase):
-    pass            # post create is the same as postbase
+    Pass
+               
 
 class PostUpdate(PostBase):
     published: bool # we have to explicitly define published, no more default
 
             # -------Response------------------
-class Post(PostBase):
+class Post(PostCreate):
     # each of these fields can be removed, they dont have to be sent to the user
     id : int 
-    # title : str # inherited from PostBase
+    # title : str # inherited from PosCreate
     # content : str
     # published: bool
     created_at: datetime
+    user_id: int
     # Pydantic's orm_mode will tell the Pydantic model to read the data even if it is not a dict,
     # but an ORM model (or any other arbitrary object with attributes)
 
