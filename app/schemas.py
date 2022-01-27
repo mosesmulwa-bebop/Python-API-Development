@@ -26,7 +26,24 @@ class User(UserBase):
     class Config:
         orm_mode = True
 
-# -----------------------------------token---------------
+# ------------------------------------Votes----------------------------------
+#---           ----- ---------REQUEST
+class VoteCreate(BaseModel):
+    post_id:int
+    dir: bool
+
+class Vote(BaseModel):
+    post_id: int
+    user_id: int
+
+    class Config:
+        orm_mode = True
+
+
+
+
+
+# -----------------------------------TOKEN---------------
 class Token(BaseModel):
     access_token : str
     token_type: str
@@ -68,4 +85,5 @@ class Post(PostCreate):
     # the pydantic model
     class Config:
         orm_mode = True
+
 
