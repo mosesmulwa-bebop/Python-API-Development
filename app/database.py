@@ -1,12 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from app.mycred import credentials
+from .config import settings
 
 # format for database url
 # SQLALCHEMY_DATABASE_URL = 'postgresql://<username>:<password>@<ip-address/hostname>/<database_name>'
 
-SQLALCHEMY_DATABASE_URL = f'postgresql://{credentials["user"]}:{credentials["password"]}@localhost/fastapi'
+SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}'
 # engine is responsible for connecting to postgres database
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
