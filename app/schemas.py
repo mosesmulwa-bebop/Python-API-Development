@@ -1,5 +1,4 @@
 from ast import Pass
-from os import access
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
@@ -87,3 +86,11 @@ class Post(PostCreate):
         orm_mode = True
 
 
+
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+    class Config:
+        orm_mode = True

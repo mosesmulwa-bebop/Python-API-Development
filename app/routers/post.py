@@ -4,6 +4,7 @@ from .. import schemas
 from .. import models
 from ..database import  get_db
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from ..utils import *
 from .. import oauth2
 
@@ -13,8 +14,8 @@ router = APIRouter(
 )
 
 # -------------------------posts-----------------------------
-
-@router.get('/', response_model=List[schemas.Post])
+# response_model=List[schemas.Post]
+@router.get('/',response_model=List[schemas.PostOut])
 def get_posts(db: Session = Depends(get_db),
  current_user  = Depends(oauth2.get_current_user),
  limit:int = 10,skip:int = 0,search:Optional[str]= ""):
@@ -22,8 +23,15 @@ def get_posts(db: Session = Depends(get_db),
     #posts = db.query(models.Post).filter(models.Post.user_id == current_user.id).all()
     #get posts from all users
    
-    posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
-    return  posts
+    #posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
+
+
+    # do left outer join of posts and votes on post_id, group by post_id
+    results= db.query(models.Post, func.count(models.Vote.post_id).label('votes')).join(
+        models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).filter(
+            models.Post.title.contains(search)).limit(limit).offset(skip).all()
+    
+    return  results
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.Post)
@@ -38,10 +46,16 @@ def create_post(post: schemas.PostCreate, db: Session = Depends(get_db),
     db.refresh(new_post)    # retrieve and store it in new_Post
     return  new_post # this is an ORM model
 
-@router.get('/{id}',response_model=schemas.Post)
+@router.get('/{id}',response_model=schemas.PostOut)
 def get_post(id : int, db: Session = Depends(get_db),
  current_user = Depends(oauth2.get_current_user)):
-    post = db.query(models.Post).filter(models.Post.id == id).first() # get first post with corresponding id
+    #post = db.query(models.Post).filter(models.Post.id == id).first() # get first post with corresponding id
+
+    post= db.query(models.Post, func.count(models.Vote.post_id).label('votes')).join(
+        models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).filter(
+            models.Post.id == id).first()
+
+
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} not found")
