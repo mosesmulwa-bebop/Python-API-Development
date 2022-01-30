@@ -1,5 +1,9 @@
 //GENERATE REQUIREMENTS FILE
 python -m pip freeze > requirements.txt
+or just pip freeze > requirements.txt
+
+//INSTALL REQUIREMENTS
+pip install -r requirements.txt
 
 // to DO: add gitignore
 
