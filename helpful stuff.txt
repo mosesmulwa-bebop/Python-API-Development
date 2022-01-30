@@ -7,3 +7,19 @@ pip install -r requirements.txt
 
 // to DO: add gitignore
 
+//git remote
+Manage the set of repositories ("remotes") whose branches you track.
+
+//restart heroku app
+heroku ps:restart
+//get logs
+heroku logs -t
+
+//run command on production heroku
+heroku run "alembic upgrade head"
+
+//steps after a change
+git add --all
+git commit -m "my message"
+git push origin main --for github
+git push heroku main --for heroku
