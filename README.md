@@ -5,3 +5,4 @@ This repo covers building a full-fledged API in Python using FastAPI. It is also
 **API** - FastAPI <br>
 **Database** - PostgreSQL <br>
 **ORM** - SQLAlchemy <br>
+**Database Migration** - Alembic <br>
