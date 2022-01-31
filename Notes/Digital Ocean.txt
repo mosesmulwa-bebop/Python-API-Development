@@ -1,0 +1,12 @@
+Created new droplet and got an ip address and created password
+
+Used command prompt to login to the ubuntu VM.
+ssh root@ipaddress
+enter password
+-------------------
+
+now install packages on the VM
+install postgresql
+
+---
+use psql to access database
