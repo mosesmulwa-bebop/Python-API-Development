@@ -6,3 +6,16 @@ This repo covers building a full-fledged API in Python using FastAPI. It is also
 **Database** - PostgreSQL <br>
 **ORM** - SQLAlchemy <br>
 **Database Migration** - Alembic <br>
+
+
+# Interactive Documentation
+
+I also deployed the API both on Heroku and Digital Ocean. The documentation is interactive so have fun creating and deleting posts.
+
+Demo: 
+
+Heroku: https://natu-social.herokuapp.com/docs/
+
+
+
+Website : https://natu-social.xyz/docs
