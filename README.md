@@ -6,7 +6,11 @@ This repo covers building a full-fledged API in Python using FastAPI. It is also
 **Database** - PostgreSQL <br>
 **ORM** - SQLAlchemy <br>
 **Database Migration** - Alembic <br>
+**Images** - Docker<br>
+**Testing** - Pytest<br>
 
+# Docker image link
+Link - https://hub.docker.com/repository/docker/mulwabebop/fastapi <br>
 
 # Interactive Documentation
 
@@ -14,8 +18,9 @@ I also deployed the API both on Heroku and Digital Ocean. The documentation is i
 
 Demo: 
 
-Heroku: https://natu-social.herokuapp.com/docs/
-
+Heroku: https://natu-social.herokuapp.com/docs/ <br>
 
 
 Website : https://natu-social.xyz/docs
+
+
