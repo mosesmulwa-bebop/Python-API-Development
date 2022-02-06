@@ -23,3 +23,10 @@ git add --all
 git commit -m "my message"
 git push origin main --for github
 git push heroku main --for heroku
+
+//pytest
+get verbose
+pytest -v
+show print statements
+pytest -s
+//combine the two pytest -v -s
