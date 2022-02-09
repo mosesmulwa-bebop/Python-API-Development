@@ -21,3 +21,9 @@ def test_divide():
 def test_multiply():
     print("testing multiply function")
     assert multiply(3,4) == 12
+
+
+
+def test_bank_set_initial_amount():
+    bank_account = BankAccount(677)
+    assert bank_account.balance == 677
