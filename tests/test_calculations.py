@@ -1,6 +1,16 @@
 import pytest
 from app.calculations import *
 
+@pytest.fixture
+def zero_bank_account():
+    return BankAccount()
+
+
+@pytest.fixture
+def bank_account():
+    return BankAccount(50)
+
+
 @pytest.mark.parametrize("num1, num2, expected_value",[
     (3,4,7),
     (6,5,11),
@@ -24,6 +34,12 @@ def test_multiply():
 
 
 
-def test_bank_set_initial_amount():
-    bank_account = BankAccount(677)
-    assert bank_account.balance == 677
+def test_bank_set_initial_amount(bank_account):
+    assert bank_account.balance == 50
+
+def test_bank_default_amount(zero_bank_account):
+    assert zero_bank_account.balance == 0
+
+def test_bank_deposit(zero_bank_account):
+    zero_bank_account.deposit(50)
+    assert zero_bank_account.balance == 50
