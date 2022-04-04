@@ -34,6 +34,8 @@ def test_multiply():
 
 
 
+
+
 def test_bank_set_initial_amount(bank_account):
     assert bank_account.balance == 50
 
@@ -43,3 +45,19 @@ def test_bank_default_amount(zero_bank_account):
 def test_bank_deposit(zero_bank_account):
     zero_bank_account.deposit(50)
     assert zero_bank_account.balance == 50
+
+
+@pytest.mark.parametrize("deposited, withdrew, expected_value",[
+    (70,70,55),
+    (80,80,55),
+    (90,90,55)
+])
+
+
+def test_bank_transaction(deposited, withdrew, expected_value, bank_account):
+    bank_account.deposit(deposited)
+    assert bank_account.balance == 50 + deposited
+    bank_account.withdraw(withdrew)
+    assert bank_account.balance == 50
+    bank_account.collect_interest()
+    assert round(bank_account.balance) == expected_value
