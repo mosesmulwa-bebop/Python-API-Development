@@ -61,3 +61,7 @@ def test_bank_transaction(deposited, withdrew, expected_value, bank_account):
     assert bank_account.balance == 50
     bank_account.collect_interest()
     assert round(bank_account.balance) == expected_value
+
+def test_insufficient_funds(bank_account):
+    with pytest.raises(InsufficientFunds):
+        bank_account.withdraw(200)
