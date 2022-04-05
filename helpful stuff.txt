@@ -30,3 +30,6 @@ pytest -v
 show print statements
 pytest -s
 //combine the two pytest -v -s
+
+ignore warnings in pytest
+-x -> stop testing if a test fails
