@@ -8,6 +8,7 @@ This repo covers building a full-fledged API in Python using FastAPI. It is also
 **Database Migration** - Alembic <br>
 **Images** - Docker<br>
 **Testing** - Pytest<br>
+**CI/CD** - Github Actions<br>
 
 # Docker image link
 Link - https://hub.docker.com/repository/docker/mulwabebop/fastapi <br>
