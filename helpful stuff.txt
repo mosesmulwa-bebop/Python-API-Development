@@ -31,5 +31,5 @@ show print statements
 pytest -s
 //combine the two pytest -v -s
 
-ignore warnings in pytest
+ignore warnings in pytest --disable-warnings
 -x -> stop testing if a test fails
